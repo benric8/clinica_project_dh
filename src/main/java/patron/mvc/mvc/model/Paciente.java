@@ -7,7 +7,6 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
-import java.util.Locale;
 
 @Getter @Setter
 @AllArgsConstructor @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -18,4 +17,5 @@ public class Paciente {
     String cedula;
     LocalDate fechaIngreso;
     Domicilio domicilio;
+    String email;
 }

@@ -31,8 +31,8 @@ public class DomicilioDAOH2 implements IDao<Domicilio>{
     }
 
     @Override
-    public void actualizar(Domicilio domicilio) {
-
+    public Domicilio actualizar(Domicilio domicilio) {
+        return null;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class DomicilioDAOH2 implements IDao<Domicilio>{
 
     @Override
     public Domicilio buscarPorId(Integer id) {
-        log.info("Inicio de operacion: buscar Domicilio por id",id);
+        log.info("Inicio de operacion: buscar Domicilio por id {}",id);
         Domicilio domicilio = null;
         try{
             PreparedStatement psSelectOne = bd.getConnection().prepareStatement(SQL_SELECT_ONE);
@@ -64,6 +64,6 @@ public class DomicilioDAOH2 implements IDao<Domicilio>{
         } catch (Exception e) {
             log.error("Problemas con la BD",e.getMessage());
         }
-        return null;
+        return domicilio;
     }
 }
