@@ -25,6 +25,8 @@ public class BD {
             st = con.createStatement();
             st.execute(Querys.SQL_DROP_CREATE_DOMICILIOS.getSql());
             st.execute(Querys.SQL_DROP_CREATE_PACIENTES.getSql());
+            st.execute(Querys.SQL_DROP_CREATE_ODONTOLOGOS.getSql());
+            st.execute(Querys.SQL_DROP_CREATE_TURNOS.getSql());
             st.execute(Querys.SQL_DROP_PRUEBA.getSql());
             log.info("se crearon las tablas y se hizo la insercion");
         }catch (Exception e) {
