@@ -21,4 +21,6 @@ public class Paciente {
     LocalDate fechaIngreso;
     @OneToOne(cascade=CascadeType.ALL) @JoinColumn(name="domicilio_id", referencedColumnName = "id")
     Domicilio domicilio;
+
+
 }

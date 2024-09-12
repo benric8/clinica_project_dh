@@ -2,6 +2,7 @@ package patron.mvc.mvc.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import patron.mvc.mvc.entity.Odontologo;
 import patron.mvc.mvc.repository.OdontologoRepository;
@@ -11,10 +12,11 @@ import java.util.Optional;
 
 @Service
 @Transactional
-@RequiredArgsConstructor
+
 public class OdontologoService {
 
-    private final OdontologoRepository odontologoRepository;
+    @Autowired
+    private  OdontologoRepository odontologoRepository;
 
     public Odontologo saveOdontologo(Odontologo odontologo) {
         return odontologoRepository.save(odontologo);

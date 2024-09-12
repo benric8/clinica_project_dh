@@ -23,4 +23,5 @@ public class Turno {
     Odontologo odontologo;
     LocalDate fecha;
 
+
 }

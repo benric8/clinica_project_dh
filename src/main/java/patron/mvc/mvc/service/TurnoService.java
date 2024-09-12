@@ -2,8 +2,14 @@ package patron.mvc.mvc.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import patron.mvc.mvc.dto.TurnoDTO;
+import patron.mvc.mvc.entity.Odontologo;
+import patron.mvc.mvc.entity.Paciente;
 import patron.mvc.mvc.entity.Turno;
+import patron.mvc.mvc.repository.OdontologoRepository;
+import patron.mvc.mvc.repository.PacienteRepository;
 import patron.mvc.mvc.repository.TurnoRepository;
 
 import java.util.List;
@@ -11,11 +17,24 @@ import java.util.Optional;
 
 @Service
 @Transactional
-@RequiredArgsConstructor
 public class TurnoService {
-    private final TurnoRepository turnoRepository;
 
-    public Turno saveTurno(Turno turno) {
+    @Autowired
+    private  TurnoRepository turnoRepository;
+
+    @Autowired private OdontologoService odontologoService ;
+    @Autowired private PacienteService pacienteService;
+
+    public Turno saveTurno(TurnoDTO turnoDTO) throws Exception{
+        Paciente paciente = pacienteService.getPacienteById(turnoDTO.getPacienteId());
+        Odontologo odontologo = odontologoService.getOdontologoById(turnoDTO.getOdontologoId());
+        if (paciente == null || odontologo == null) {
+            throw new Exception("el odontoologo o el paciente no existen");
+        }
+        Turno turno = new Turno();
+        turno.setPaciente(paciente);
+        turno.setOdontologo(odontologo);
+        turno.setFecha(turnoDTO.getFecha());
         return turnoRepository.save(turno);
     }
     public Turno updateTurno(Turno turno) throws Exception {

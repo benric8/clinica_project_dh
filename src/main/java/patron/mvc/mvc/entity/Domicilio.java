@@ -18,5 +18,13 @@ public class Domicilio {
     Integer numero;
     String localidad;
     String provincia;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
 

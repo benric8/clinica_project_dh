@@ -4,17 +4,15 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import patron.mvc.mvc.entity.Odontologo;
 
 import java.time.LocalDate;
 
 @Getter @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class PacienteDTO {
+public class TurnoResponseDTO {
     Long id;
-    String nombre;
-    String apellido;
-    String email;
-    String cedula;
-    LocalDate fechaIngreso;
-    DomicilioDTO domicilio;
+    LocalDate fecha;
+    PacienteDTO pacienteDTO;
+    OdontologoDTO odontologoDTO;
 }

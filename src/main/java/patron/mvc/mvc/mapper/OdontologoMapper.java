@@ -1,5 +1,6 @@
 package patron.mvc.mvc.mapper;
 
+
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import patron.mvc.mvc.dto.OdontologoDTO;
@@ -12,5 +13,5 @@ public interface OdontologoMapper {
     OdontologoMapper INSTANCE  = Mappers.getMapper(OdontologoMapper.class);
     OdontologoDTO odontologoToOdontologoDTO(Odontologo odontologo);
     Odontologo odontologoDTOtoOdontologo(OdontologoDTO odontologoDTO);
-    List<OdontologoDTO> odontologosToOdontologoDtos(List<Odontologo> odontologos);
+    List<OdontologoDTO> odontologosToOdontologosDTO(List<Odontologo> odontologos);
 }

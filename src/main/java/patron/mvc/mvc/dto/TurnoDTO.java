@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class TurnoDTO {
     Long id;
-     LocalDate fecha;
-     Long pacienteId;
-     Long odontologoId;
+    LocalDate fecha;
+    Long pacienteId;
+    Long odontologoId;
 }

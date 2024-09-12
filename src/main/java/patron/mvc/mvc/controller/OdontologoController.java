@@ -24,12 +24,37 @@ public class OdontologoController {
     public ResponseEntity<OdontologoDTO> saveOdontologo(@RequestBody OdontologoDTO odontologoDTO) {
         Odontologo odontologo= OdontologoMapper.INSTANCE.odontologoDTOtoOdontologo(odontologoDTO);
         Odontologo odontologoSaved = odontologoService.saveOdontologo(odontologo);
-        //odontologoDTO.setId(odontologoSaved.getId());
+        odontologoDTO.setId(odontologoSaved.getId());
         return new ResponseEntity<>(odontologoDTO, HttpStatus.OK);
     }
+
+    @PutMapping
+    public ResponseEntity<OdontologoDTO> updateOdontologo(@RequestBody OdontologoDTO odontologoDTO) {
+        Odontologo odontologo = OdontologoMapper.INSTANCE.odontologoDTOtoOdontologo(odontologoDTO);
+       try {
+        Odontologo odontologoUpdated = odontologoService.updateOdontologo(odontologo);
+       } catch (Exception e) {
+           throw new RuntimeException(e);
+       }
+       return new ResponseEntity<>(odontologoDTO, HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<String> deleteOdontologo(@PathVariable Long id) {
+        if (odontologoService.deleteOdontologo(id)) {
+            return new ResponseEntity<>("Odontologo eliminado", HttpStatus.OK);
+        }
+        return new ResponseEntity<>("Odontologo no encontrado", HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<OdontologoDTO> findOdontologoById(@PathVariable Long id) {
+        return new ResponseEntity<>(OdontologoMapper.INSTANCE.odontologoToOdontologoDTO(odontologoService.getOdontologoById(id)),HttpStatus.OK);
+    }
+
     @GetMapping
     public ResponseEntity<List<OdontologoDTO>> getAllOdontologos(){
-        return new ResponseEntity<>(OdontologoMapper.INSTANCE.odontologosToOdontologoDtos(odontologoService.getAllOdontologos()), HttpStatus.OK);
+        return new ResponseEntity<>(OdontologoMapper.INSTANCE.odontologosToOdontologosDTO(odontologoService.getAllOdontologos()), HttpStatus.OK);
     }
 
 }

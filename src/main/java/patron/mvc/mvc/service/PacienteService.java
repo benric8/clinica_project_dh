@@ -12,9 +12,10 @@ import java.util.Optional;
 
 @Service
 @Transactional
-@RequiredArgsConstructor
+
 public class PacienteService {
-    private final PacienteRepository pacienteRepository;
+    @Autowired
+    private  PacienteRepository pacienteRepository;
 
     public Paciente savePaciente(Paciente paciente) {
         return pacienteRepository.save(paciente);
