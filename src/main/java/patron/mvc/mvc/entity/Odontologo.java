@@ -4,13 +4,13 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+@Entity
+@Table(name="odontologos")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Entity
-@Table(name="odontologos")
 public class Odontologo {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
