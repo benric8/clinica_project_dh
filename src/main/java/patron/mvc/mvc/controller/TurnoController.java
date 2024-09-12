@@ -24,34 +24,38 @@ public class TurnoController {
     @PostMapping
     public ResponseEntity<TurnoResponseDTO> guardarTurno(@RequestBody TurnoDTO turnoDTO) {
         Turno turno = null;
-        try{
+
             turno = turnoService.saveTurno(turnoDTO);
 
-        }catch (Exception e){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+
         return new ResponseEntity<>(TurnoMapper.INSTANCE.turnoToTurnoResponseDTO(turno),HttpStatus.OK);
 
     }
-
+    @PutMapping
+    public ResponseEntity<TurnoResponseDTO> updateTurno(@RequestBody TurnoDTO turnoDTO) {
+        Turno turno = null;
+        turno = turnoService.updateTurno(turnoDTO);
+        return new ResponseEntity<>(TurnoMapper.INSTANCE.turnoToTurnoResponseDTO(turno),HttpStatus.OK);
+    }
     @GetMapping
-    public ResponseEntity<List<Turno>> listarTurnos() {
-        return null;
+    public ResponseEntity<List<TurnoResponseDTO>> listarTurnos(@RequestParam(required = false) Long idPaciente,
+                                                    @RequestParam(required = false) Long idOdontologo) {
+        List<Turno> turnos = turnoService.getTurnos(idPaciente, idOdontologo);
+
+        return new ResponseEntity<>(TurnoMapper.INSTANCE.turnoToTurnoResponseDTO(turnos), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Turno> buscarTurnoPorId(@PathVariable int id) {
-        return null;
+    public ResponseEntity<TurnoResponseDTO> buscarTurnoPorId(@PathVariable Long id) {
+        return new ResponseEntity<>(TurnoMapper.INSTANCE.turnoToTurnoResponseDTO(turnoService.getTurnoById(id)),HttpStatus.OK );
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> eliminarTurno(@PathVariable int id) {
-
-        return null;
+    public ResponseEntity<String> eliminarTurno(@PathVariable Long id) {
+        return new ResponseEntity<>(turnoService.deleteTurno(id)?"se elimino":"no se elimino",HttpStatus.OK);
     }
 
-    @PutMapping
-    public ResponseEntity<Turno> updateTurno(@RequestBody Turno turno) {
-        return null;
-    }
+
+
+
 }

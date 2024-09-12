@@ -7,6 +7,8 @@ import patron.mvc.mvc.dto.TurnoDTO;
 import patron.mvc.mvc.dto.TurnoResponseDTO;
 import patron.mvc.mvc.entity.Turno;
 
+import java.util.List;
+
 @Mapper(uses = {PacienteMapper.class,OdontologoMapper.class})
 public interface TurnoMapper {
     TurnoMapper INSTANCE = Mappers.getMapper(TurnoMapper.class);
@@ -18,5 +20,7 @@ public interface TurnoMapper {
     @Mapping(source = "paciente" ,target = "pacienteDTO")
     @Mapping(source = "odontologo" ,target = "odontologoDTO")
     TurnoResponseDTO turnoToTurnoResponseDTO(Turno turno);
+
+    List<TurnoResponseDTO> turnoToTurnoResponseDTO(List<Turno> turnos);
 
 }
