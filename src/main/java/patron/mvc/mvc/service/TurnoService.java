@@ -61,11 +61,11 @@ public class TurnoService {
         if(idPaciente == null && idOdontologo == null) {
             return turnoRepository.findAll();
         }else if(idPaciente != null && idOdontologo != null) {
-            return turnoRepository.findByPacienteAndOdontologo(idPaciente,idOdontologo);
+            return turnoRepository.findByPacienteIdAndOdontologoId(idPaciente,idOdontologo);
         }else if(idPaciente == null && idOdontologo != null) {
-            return turnoRepository.findByOdontologo(idOdontologo);
+            return turnoRepository.findByOdontologoId(idOdontologo);
         }else {
-            return turnoRepository.findByPaciente(idPaciente);
+            return turnoRepository.findByPacienteId(idPaciente);
         }
     }
 }
