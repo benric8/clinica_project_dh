@@ -7,7 +7,7 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 @Table(name="domicilios")

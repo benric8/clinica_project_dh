@@ -6,7 +6,7 @@ import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
 @Getter @Setter
-@AllArgsConstructor @NoArgsConstructor
+@AllArgsConstructor @NoArgsConstructor @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 @Table(name="pacientes")

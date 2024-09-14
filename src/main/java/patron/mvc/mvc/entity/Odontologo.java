@@ -9,7 +9,7 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Odontologo {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

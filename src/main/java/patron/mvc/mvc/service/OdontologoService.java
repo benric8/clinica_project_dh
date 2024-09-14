@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import patron.mvc.mvc.entity.Odontologo;
+import patron.mvc.mvc.exception.ResourceNotFoundException;
 import patron.mvc.mvc.repository.OdontologoRepository;
 
 import java.util.List;
@@ -21,13 +22,13 @@ public class OdontologoService {
     public Odontologo saveOdontologo(Odontologo odontologo) {
         return odontologoRepository.save(odontologo);
     }
-    public Odontologo updateOdontologo(Odontologo odontologo) throws Exception {
+    public Odontologo updateOdontologo(Odontologo odontologo)  {
         Optional<Odontologo> odontologoToUpdate = odontologoRepository.findById(odontologo.getId());
         Odontologo odontologoUpdated;
         if(odontologoToUpdate.isPresent()) {
             odontologoUpdated= odontologoRepository.save(odontologo);
         }else {
-            throw new Exception("Odontologo no encontrado");
+            throw new ResourceNotFoundException("Odontologo no encontrado");
         }
         return odontologoUpdated;
     }

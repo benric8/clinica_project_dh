@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 @Table(name="turnos")
@@ -22,6 +22,5 @@ public class Turno {
     @ManyToOne @JoinColumn(name = "odontologo_id", referencedColumnName = "id")
     Odontologo odontologo;
     LocalDate fecha;
-
 
 }

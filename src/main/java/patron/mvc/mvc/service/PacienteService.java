@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import patron.mvc.mvc.entity.Paciente;
+import patron.mvc.mvc.exception.ResourceNotFoundException;
 import patron.mvc.mvc.repository.PacienteRepository;
 
 import java.util.List;
@@ -20,13 +21,13 @@ public class PacienteService {
     public Paciente savePaciente(Paciente paciente) {
         return pacienteRepository.save(paciente);
     }
-    public Paciente updatePaciente(Paciente paciente) throws Exception {
+    public Paciente updatePaciente(Paciente paciente){
         Optional<Paciente> pacienteToUpdate = pacienteRepository.findById(paciente.getId());
         Paciente pacienteUpdated;
         if(pacienteToUpdate.isPresent()) {
             pacienteUpdated= pacienteRepository.save(paciente);
         }else {
-            throw new Exception("Paciente no encontrado");
+            throw new ResourceNotFoundException("Paciente no encontrado");
         }
         return pacienteUpdated;
     }
