@@ -1,5 +1,6 @@
 package com.dh.clavecompas.bd.clavecompas;
 
+import com.zaxxer.hikari.HikariDataSource;
 import jakarta.persistence.EntityManagerFactory;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -32,7 +33,7 @@ public class BDConfig {
     @Bean(name = "cxClavecompasDS")
     @ConfigurationProperties(prefix = "spring.datasource")
     DataSource clavecompasDataSource() throws NamingException {
-        return DataSourceBuilder.create().build();
+        return DataSourceBuilder.create().type(HikariDataSource.class).build();
     }
 
     @Bean(name = "clavecompasEntityManagerFactory")
