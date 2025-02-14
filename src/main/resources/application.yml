@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: clavecompas
+  datasource:
+    url: jdbc:postgresql://localhost:5432/clavecompas
+    username: postgres
+    password: 12345678
+    driver-class-name: org.postgresql.Driver
+
+
